@@ -1,0 +1,52 @@
+create database futebol;
+use futebol;
+create table jogo(
+id int,
+data varchar(40) not null,
+hora varchar(10) not null,
+local varchar (40) not null,
+primary key (id)
+);
+create table jogador(
+id int Auto_increment,
+nome int,
+clube int,
+Numero double,
+data_nascimento date,
+primary key (id)
+);
+create table clube(
+id int,
+nome int,
+primary key (id)
+);
+create table campeonato(
+id int,
+nome varchar (30),
+primary key (id)
+);
+create table jogo_jogador(
+fk_id_jogo int not null,
+fk_id_jogador int not null,
+constraint jogo_jogador_pk primary
+key(fk_id_jogo,fk_id_jogador));
+
+create table clube_campeonato(
+fk_id_clube int not null,
+fk_id_campeonato int not null,
+constraint clube_campeonato_pk primary
+key(fk_id_clube,fk_id_campeonato));
+
+create table Clube_jogador(
+fk_clube int,
+fk_Jogador int,
+primary key (fk_clube,fk_jogador)
+);
+create table clube_jogador(
+fk_id_clube int not null,
+fk_id_jogador int not null,
+constraint clube_jogador_pk primary
+key(fk_id_clube,fk_id_jogador));
+
+insert into jogo(id, codigo, data, hora, local)
+values( 20 , 202301, 24/05/2023, '16H', 'sao januario');
