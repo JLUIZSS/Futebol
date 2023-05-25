@@ -28,25 +28,38 @@ primary key (id)
 create table jogo_jogador(
 fk_id_jogo int not null,
 fk_id_jogador int not null,
-constraint jogo_jogador_pk primary
-key(fk_id_jogo,fk_id_jogador));
+constraint jogo_jogador
+primary key(fk_id_jogo,fk_id_jogador)
+);
+Alter table jogo_jogador
+ add foreign key (fk_id_jogo) references jogo(id),
+ add foreign key (fk_id_jogador) references jogador(id);
 
 create table clube_campeonato(
 fk_id_clube int not null,
 fk_id_campeonato int not null,
-constraint clube_campeonato_pk primary
-key(fk_id_clube,fk_id_campeonato));
+constraint clube_campeonato_pk
+ primary key(fk_id_clube,fk_id_campeonato)
+ );
+ Alter table clube_campeonato
+ add foreign key (fk_id_clube) references clube(id),
+ add foreign key (fk_id_campeonato) references campeonato(id);
 
 create table Clube_jogador(
 fk_clube int,
 fk_Jogador int,
+constraint clube_jogador_pk
 primary key (fk_clube,fk_jogador)
 );
 create table clube_jogador(
 fk_id_clube int not null,
 fk_id_jogador int not null,
-constraint clube_jogador_pk primary
-key(fk_id_clube,fk_id_jogador));
+constraint clube_jogador
+primary key(fk_id_clube,fk_id_jogador)
+);
+Alter table clube_jogador
+ add foreign key (fk_id_clube) references clube(id),
+ add foreign key (fk_id_jogador) references jogador(id);
 
 insert into jogo(id, codigo, data, hora, local)
 values( 20 , 202301, 24/05/2023, '16H', 'sao januario');
