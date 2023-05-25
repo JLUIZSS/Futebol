@@ -9,15 +9,15 @@ primary key (id)
 );
 create table jogador(
 id int Auto_increment,
-nome int,
-clube int,
-Numero double,
-data_nascimento date,
+nome varchar(20),
+clube varchar(20),
+Numero int,
+data_nascimento varchar(20) not null,
 primary key (id)
 );
 create table clube(
 id int,
-nome int,
+nome varchar(20),
 primary key (id)
 );
 create table campeonato(
@@ -45,12 +45,7 @@ constraint clube_campeonato_pk
  add foreign key (fk_id_clube) references clube(id),
  add foreign key (fk_id_campeonato) references campeonato(id);
 
-create table Clube_jogador(
-fk_clube int,
-fk_Jogador int,
-constraint clube_jogador_pk
-primary key (fk_clube,fk_jogador)
-);
+
 create table clube_jogador(
 fk_id_clube int not null,
 fk_id_jogador int not null,
@@ -61,5 +56,23 @@ Alter table clube_jogador
  add foreign key (fk_id_clube) references clube(id),
  add foreign key (fk_id_jogador) references jogador(id);
 
-insert into jogo(id, codigo, data, hora, local)
-values( 20 , 202301, 24/05/2023, '16H', 'sao januario');
+insert into jogo(id, data, hora, local)
+values( 20 , 24/05/2023, '16H', 'sao januario');
+
+insert into jogador(id, nome, clube, numero, data_nascimento)
+values(337830, 'Gabigol', 'Flamengo', 10 , '30/08/1996');
+
+insert into clube (id, nome)
+values('3999', 'Flamengo');
+
+insert into campeonato (id, nome)
+values('1960', 'libertadores');
+
+insert into jogo_jogador (fk_id_jogo , fk_id_jogador)
+values(20, 337830);
+
+insert into clube_campeonato (fk_id_clube , fk_id_campeonato)
+values('3999', '1960');
+
+insert into clube_jogador (fk_id_clube , fk_id_jogador)
+values('3999', 337830);
